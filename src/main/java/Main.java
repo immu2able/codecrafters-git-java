@@ -34,7 +34,7 @@ public class Main {
           case "-p" -> {
             try {
               final File blob = new File(".git/objects/" + sha.substring(0, 2), sha.substring(2));
-              final String content = new BufferedReader (new InputStreamReader(new InflaterInputStream(new FileInputStream(blobFile)))).readLine();
+              final String content = new BufferedReader (new InputStreamReader(new InflaterInputStream(new FileInputStream(blob)))).readLine();
               System.out.println(content);
 
             } catch (IOException ex) {
