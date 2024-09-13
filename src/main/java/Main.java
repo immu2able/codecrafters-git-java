@@ -5,7 +5,6 @@ import java.nio.file.Files;
 public class Main {
   public static void main(String[] args){
     // You can use print statements as follows for debugging, they'll be visible when running tests.
-    System.out.println("Logs from your program will appear here!");
 
     // Uncomment this block to pass the first stage
     //
@@ -21,7 +20,7 @@ public class Main {
         try {
           head.createNewFile();
           Files.write(head.toPath(), "ref: refs/heads/main\n".getBytes());
-          System.out.println("Initialized git directory");
+          //System.out.println("Initialized git directory");
         } catch (IOException e) {
           throw new RuntimeException(e);
         }
@@ -35,7 +34,7 @@ public class Main {
           case "-p" -> {
             try {
               final File blob = new File(".git/objects/" + sha.substring(0, 2), sha.substring(2));
-              final String content = new String(Files.readAllBytes(blob.toPath()));
+              final String content = new BufferedReader (new InputStreamReader(new InflaterInputStream(new FileInputStream(blobFile)))).readLine();
               System.out.println(content);
 
             } catch (IOException ex) {
