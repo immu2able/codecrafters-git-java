@@ -33,9 +33,14 @@ public class Main {
 
         switch (type) {
           case "-p" -> {
-            final File blob = new File(".git/objects" + sha.substring(0, 2), sha.substring(2));
-            final String content = new String(Files.readAllBytes(blob.toPath()));
-            System.out.println(content);
+            try {
+              final File blob = new File(".git/objects" + sha.substring(0, 2), sha.substring(2));
+              final String content = new String(Files.readAllBytes(blob.toPath()));
+              System.out.println(content);
+
+            } catch (IOException ex) {
+              throw new RuntimeException(ex);
+            }
           }
 
           default -> System.out.println("Unknown type: " + type);
