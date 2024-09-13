@@ -39,7 +39,7 @@ public class Main {
             try {
               final File blob = new File(".git/objects/" + sha.substring(0, 2), sha.substring(2));
               final String content = new BufferedReader (new InputStreamReader(new InflaterInputStream(new FileInputStream(blob)))).readLine();
-              content = content.substring(content.indexOf("\0"))
+              content = content.substring(content.indexOf("\0"));
               System.out.println(content);
 
             } catch (IOException ex) {
