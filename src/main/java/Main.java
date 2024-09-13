@@ -35,7 +35,10 @@ public class Main {
           case "-p" -> {
             final File blob = new File(".git/objects", sha.substring(0, 2), sha.substring(2));
             final String content = new String(Files.readAllBytes(blob.toPath()));
-            System.out.println(content)
+            System.out.println(content);
+          }
+
+          default -> System.out.println("Unknown type: " + type);
           }
 
 
