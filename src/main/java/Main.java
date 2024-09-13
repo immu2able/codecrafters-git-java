@@ -39,8 +39,8 @@ public class Main {
             try {
               final File bFile = new File(".git/objects/" + sha.substring(0, 2), sha.substring(2));
               final String blob = new BufferedReader (new InputStreamReader(new InflaterInputStream(new FileInputStream(bFile)))).readLine();
-              String content = blob.substring(blob.indexOf("\0")+1).replaceAll("\n", "");
-              System.out.println(content);
+              String content = blob.substring(blob.indexOf("\0")+1);
+              System.out.print(content);
 
             } catch (IOException ex) {
               throw new RuntimeException(ex);
