@@ -26,6 +26,21 @@ public class Main {
           throw new RuntimeException(e);
         }
       }
+
+      case "cat-file" -> {
+        final String type = args[1];
+        final String sha = args[2];
+
+        switch (type) {
+          case "-p" -> {
+            final File blob = new File(".git/objects", sha.substring(0, 2), sha.substring(2));
+            final String content = new String(Files.readAllBytes(blob.toPath()));
+            System.out.println(content)
+          }
+
+
+      }
+
       default -> System.out.println("Unknown command: " + command);
     }
   }
