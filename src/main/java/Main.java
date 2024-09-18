@@ -48,12 +48,13 @@ public class Main {
               throw new RuntimeException(ex);
             }
           }
-
           default -> System.out.println("Unknown type: " + type);
-          }
+        }
       }
 
       case "hash-object" -> {
+
+        System.out.println("inside hash-object")
         final String type = args[1];
         switch (type) {
           case "-w" -> {
@@ -70,9 +71,7 @@ public class Main {
             Files.write(bFile.toPath(), (type + "\0" + Files.readString(file.toPath())).getBytes());
 
             }
-
-          default -> System.out.println("Unknown type: " + type);
-
+            default -> System.out.println("Unknown type: " + type);
           }
         }
       }
